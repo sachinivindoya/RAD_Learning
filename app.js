@@ -1,10 +1,20 @@
-// objects
-var student;
-student = { id: 1, name: 'Kavindu', age: 28, college: 'UoBolton' };
-// student = {id: 1, name: 'Kavindu', age: 28, college: 'UoBolton', subject: "SE"};
-// student = 10;
-//------------------------------- Distance Calculator ------------------------------------
-function calcDistance(location1, location2) {
+var btn_element = document.getElementById('btn');
+var location1_lon_element = document.getElementById('lat1');
+var location1_lat_element = document.getElementById('lon1');
+var location2_lon_element = document.getElementById('lat2');
+var location2_lat_element = document.getElementById('lon2');
+var result_element = document.getElementById('result');
+btn_element.addEventListener('click', function () {
+    var location1_lon1 = location1_lon_element.value;
+    var location1_lat1 = location1_lat_element.value;
+    var location2_lon2 = location2_lon_element.value;
+    var location2_let2 = location2_lat_element.value;
+    var location1 = { lon: +location1_lon1, lat: +location1_lat1 };
+    var location2 = { lon: +location2_lon2, lat: +location2_let2 };
+    var result = calDistance(location1, location2);
+    result_element.innerText = "".concat(result.toFixed(2), " KM");
+});
+function calDistance(location1, location2) {
     var lon1 = location1.lon;
     var lat1 = location1.lat;
     var lon2 = location2.lon;
@@ -22,7 +32,3 @@ function calcDistance(location1, location2) {
     // ---- calc distance  ----
     return distance;
 }
-var location_1 = { lon: 80.7718, lat: 7.8731 }; // sri lanka
-var location_2 = { lon: 133.7751, lat: 25.2744 }; // ausi
-var distance = calcDistance(location_1, location_2);
-console.log("Distance: ".concat(distance.toFixed(2), " KM"));
